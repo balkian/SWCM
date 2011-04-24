@@ -3,7 +3,7 @@ require 'socket'
 numCon = 0
 maxCon = 10
 
-def respond(socket, code, body)   # Genera prespuestas
+def respond(socket, code, body)   # Genera respuestas
   socket.puts "HTTP/1.0 #{ code }"
   socket.puts "Content-type: text/html"
   socket.puts "Content-length: #{ body.length }"
@@ -15,12 +15,12 @@ end
 server = TCPServer.open(8080)
 puts "web server created at port 8080"
 loop do
-  if(numCon < maxCon)
-	sock = server.accept				# Acepta conexión del cliente
+  if(numCon < maxCon)					# Si no se ha superado el nÃºmero mÃ¡ximo de hebras
+	sock = server.accept				# Acepta conexiÃ³n del cliente
 	t = Thread.new(sock) do |socket|
-		numCon=numCon+1
-		request = socket.gets            # Lee la primera línea
-		o = socket.gets until ( o != "") # cabecera acaba con lí­nea vacía
+		numCon=numCon+1					
+		request = socket.gets            # Lee la primera lÃ­nea
+		o = socket.gets until ( o != "") # cabecera acaba con lÃ­nea vacÃ­a
 
 		unless request =~ /^GET/          # Si el comando no esta soportado
 			respond socket, "400 Bad Request", "<html><body><h1>Comando desconocido</h1></body></html>" 
