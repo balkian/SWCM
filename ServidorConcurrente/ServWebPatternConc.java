@@ -1,3 +1,9 @@
+/*
+* Juan Fernando Sánchez Rada
+* Sergio Díaz Bautista
+* SWCM 2010/11
+*/
+
 package ServidorConcurrente;
 
 import java.util.*;   

@@ -1,3 +1,9 @@
+# Concurrent Server
+# Juan Fernando Sánchez Rada
+# Sergio Díaz Bautista
+# SWCM 2010/11
+#
+
 require 'socket'
 
 numCon = 0
